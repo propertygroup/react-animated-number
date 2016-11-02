@@ -32,7 +32,7 @@ var AnimatedNumber = function (_Component) {
     function AnimatedNumber() {
         _classCallCheck(this, AnimatedNumber);
 
-        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(AnimatedNumber).call(this));
+        var _this = _possibleConstructorReturn(this, (AnimatedNumber.__proto__ || Object.getPrototypeOf(AnimatedNumber)).call(this));
 
         _this.state = {
             currentValue: 0
@@ -84,9 +84,9 @@ var AnimatedNumber = function (_Component) {
     }, {
         key: 'tweenValue',
         value: function tweenValue(timestamp, start) {
-            var _props = this.props;
-            var value = _props.value;
-            var duration = _props.duration;
+            var _props = this.props,
+                value = _props.value,
+                duration = _props.duration;
             var currentValue = this.state.currentValue;
 
             var currentTime = timestamp;
@@ -116,14 +116,20 @@ var AnimatedNumber = function (_Component) {
     }, {
         key: 'render',
         value: function render() {
-            var _props2 = this.props;
-            var formatValue = _props2.formatValue;
-            var value = _props2.value;
-            var frameStyle = _props2.frameStyle;
-            var stepPrecision = _props2.stepPrecision;
-            var _state = this.state;
-            var currentValue = _state.currentValue;
-            var fromValue = _state.fromValue;
+            var _props2 = this.props,
+                formatValue = _props2.formatValue,
+                value = _props2.value,
+                frameStyle = _props2.frameStyle,
+                stepPrecision = _props2.stepPrecision;
+            var _state = this.state,
+                currentValue = _state.currentValue,
+                fromValue = _state.fromValue;
+
+            var componentsProps = {
+                value: this.props.value,
+                style: this.props.style
+            };
+
             var style = this.props.style;
 
             var adjustedValue = currentValue;
@@ -149,7 +155,7 @@ var AnimatedNumber = function (_Component) {
                 style = currStyle;
             }
 
-            return _react2.default.createElement(this.props.component, _extends({}, this.props, { style: style }), formatValue(adjustedValue));
+            return _react2.default.createElement(this.props.component, _extends({}, componentsProps, { style: style }), formatValue(adjustedValue));
         }
     }]);
 

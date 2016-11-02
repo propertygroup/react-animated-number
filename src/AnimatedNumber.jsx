@@ -122,6 +122,10 @@ export default class AnimatedNumber extends Component {
     render() {
         const {formatValue, value, frameStyle, stepPrecision} = this.props;
         const {currentValue, fromValue} = this.state;
+        const componentsProps = {
+            value: this.props.value,
+            style: this.props.style
+        };
 
         let {style} = this.props;
         let adjustedValue: number = currentValue;
@@ -152,7 +156,7 @@ export default class AnimatedNumber extends Component {
 
         return React.createElement(
             this.props.component,
-            {...this.props, style},
+            {...componentsProps, style},
             formatValue(adjustedValue)
         );
     }
